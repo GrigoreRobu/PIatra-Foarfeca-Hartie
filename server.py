@@ -26,7 +26,7 @@ def game_start(client_socket):
     rounds = 3
 
     while player_score < 2 and computer_score < 2:
-        client_socket.send("Serverul a generat o valoare random. Este pregatit!\n".encode())
+        client_socket.send("Serverul e pregatit!\n".encode())
 
         client_socket.send("Alege varianta (P pentru Piatra, H pentru Hartie, F pentru Foarfeca): ".encode())
         player_choice = client_socket.recv(1024).decode().strip().upper()
@@ -67,7 +67,7 @@ while True:
 
     while True:
         client_socket.send(
-            "Scrie START pentru a incepe jocul de Piatra Foarfeca Hartie sau Q pentru a iesi.\n".encode())
+            "Scrie START pentru a incepe jocul de Piatra-Foarfeca-Hartie sau Q pentru a iesi.\n".encode())
         start_command = client_socket.recv(1024).decode().strip().upper()
         if start_command == "START":
             game_start(client_socket)
@@ -76,5 +76,5 @@ while True:
             break
         else:
             client_socket.send(
-                "Comanda necunoscuta. Va rog sa introduceti START pentru a incepe jocul sau Q pentru a iesi.\n".encode())
+                "Comanda necunoscuta. Introdu START pentru a incepe jocul sau Q pentru a iesi.\n".encode())
     client_socket.close()

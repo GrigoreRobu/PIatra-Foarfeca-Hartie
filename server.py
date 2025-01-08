@@ -66,8 +66,7 @@ while True:
     print(f"Adresa {addr} s-a conectat.")
 
     while True:
-        client_socket.send(
-            "Scrie START pentru a incepe jocul de Piatra-Foarfeca-Hartie sau Q pentru a iesi.\n".encode())
+        client_socket.send("Scrie START pentru a incepe jocul de Piatra-Foarfeca-Hartie sau Q pentru a iesi.\n".encode())
         start_command = client_socket.recv(1024).decode().strip().upper()
         if start_command == "START":
             game_start(client_socket)
@@ -75,6 +74,5 @@ while True:
             client_socket.send("Deconectare...\n".encode())
             break
         else:
-            client_socket.send(
-                "Comanda necunoscuta. Introdu START pentru a incepe jocul sau Q pentru a iesi.\n".encode())
+            client_socket.send("Comanda necunoscuta. Introdu START pentru a incepe jocul sau Q pentru a iesi.\n".encode())
     client_socket.close()
